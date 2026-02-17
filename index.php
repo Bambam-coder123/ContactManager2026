@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['isLoggedIn'])) {
+        header("Location: login_form.php");
+        die();
+    }
 
     require("database.php");
 
@@ -26,7 +32,7 @@
         <?php include("header.php"); ?>
 
         <main>
-            <h2>Contact List</h2>
+            <h2>Contact List (<?php echo "Logged In User: " . $_SESSION['userName']; ?>)</h2>
             <table>
                 <tr>
                     <th>First Name</th>
@@ -79,6 +85,14 @@
             </table>
 
             <p><a href="add_contact_form.php">Add Contact</a></p>
+
+            <!-- temporary link to the register user form for testing purposes -->
+            <!-- <p><a href="register_user_form.php">Register User - Temporary</a></p> -->
+
+            <!-- temporary link to the login form for testing purposes -->
+            <!-- <p><a href="login_form.php">Login - Temporary</a></p> -->
+
+            <p><a href="logout.php">Logout</a></p
 
         </main>
 
